@@ -49,7 +49,7 @@ namespace Esercizio_U4_S2_L3.Controllers {
 
             bool areSaleFull = false;
 
-            if (bigliettiSalaNord == 2 || bigliettiSalaSud == 2 || bigliettiSalaEst == 2) {
+            if (bigliettiSalaNord == 120 || bigliettiSalaSud == 120 || bigliettiSalaEst == 120) {
                 areSaleFull = true;
             }
 
