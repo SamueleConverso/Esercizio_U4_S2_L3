@@ -1,0 +1,123 @@
+﻿@model BigliettoViewModel
+
+@{
+	ViewData["Title"] = "Biglietti";
+}
+
+<h1>Lista biglietti venduti (tot: @Model.Biglietti.Count)</h1>
+
+<h4>
+	@{
+		int numeroInteri = 0;
+		for (int i = 0; i < Model.Biglietti.Count; i++)
+		{
+			if (!Model.Biglietti[i].isRidotto)
+			{
+				numeroInteri++;
+			}
+		}
+	}
+	Numero interi: @numeroInteri
+</h4>
+
+<h4>
+	@{
+		int numeroRidotti = 0;
+		for (int i = 0; i < Model.Biglietti.Count; i++) {
+			if (Model.Biglietti[i].isRidotto)
+			{
+				numeroRidotti++;
+			}
+}
+}
+	Numero ridotti: @numeroRidotti
+</h4>
+
+<h4>
+	@{
+		int numeroSalaNord = 0;
+		for (int i = 0; i < Model.Biglietti.Count; i++)
+		{
+			if (Model.Biglietti[i].Sala == "SALA NORD")
+			{
+				numeroSalaNord++;
+			}
+		}
+	}
+	Num. SALA NORD: @numeroSalaNord
+</h4>
+
+<h4>
+	@{
+		int numeroSalaEst = 0;
+		for (int i = 0; i < Model.Biglietti.Count; i++)
+		{
+			if (Model.Biglietti[i].Sala == "SALA EST")
+			{
+				numeroSalaEst++;
+			}
+		}
+	}
+	Num. SALA EST: @numeroSalaEst
+</h4>
+
+<h4>
+	@{
+		int numeroSalaSud = 0;
+		for (int i = 0; i < Model.Biglietti.Count; i++)
+		{
+			if (Model.Biglietti[i].Sala == "SALA SUD")
+			{
+				numeroSalaSud++;
+			}
+		}
+	}
+	Num. SALA SUD: @numeroSalaSud
+</h4>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Nome
+			</th>
+			<th>
+				Cognome
+			</th>
+			<th>
+				Sala
+			</th>
+			<th>
+				Tipo di biglietto
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Biglietti)
+		{
+			<tr>
+				<td>
+					@item.Nome
+				</td>
+				<td>
+					@item.Cognome
+				</td>
+				<td>
+					@item.Sala
+				</td>
+				<td>
+					@{
+						if (item.isRidotto)
+						{
+							<span>Ridotto</span>
+						}
+						else
+						{
+							<span>Intero</span>
+						}
+					}
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
